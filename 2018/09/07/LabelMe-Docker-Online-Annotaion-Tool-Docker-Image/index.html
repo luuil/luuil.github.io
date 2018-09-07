@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en,zh-Hanss,default">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="LabelMe 是一个用 Javascript 编写的图像标注工具, 可以用于 在线 图像标注. 也就是说, LabelMe 可以部署在服务器, 然后使用浏览器进行访问. 与传统图像标注工具相比, 优势在于可以从任何地方访问该工具, 而且不需要在自己机器上安装或复制整个大型数据集. 我已将它部署在服务器, 以供外包人员能够远程进行标注, 而不需要把整个数据集拷贝给他们. 有如下优势  添加待标图片">
+<meta name="keywords" content="Docker,LabelMe,Image Annotation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LabelMe-Docker: Online Annotaion Tool Docker Image">
+<meta property="og:url" content="http://luuil.github.io/2018/09/07/LabelMe-Docker-Online-Annotaion-Tool-Docker-Image/index.html">
+<meta property="og:site_name" content="Luuil">
+<meta property="og:description" content="LabelMe 是一个用 Javascript 编写的图像标注工具, 可以用于 在线 图像标注. 也就是说, LabelMe 可以部署在服务器, 然后使用浏览器进行访问. 与传统图像标注工具相比, 优势在于可以从任何地方访问该工具, 而且不需要在自己机器上安装或复制整个大型数据集. 我已将它部署在服务器, 以供外包人员能够远程进行标注, 而不需要把整个数据集拷贝给他们. 有如下优势  添加待标图片">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-09-07T06:08:39.191Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LabelMe-Docker: Online Annotaion Tool Docker Image">
+<meta name="twitter:description" content="LabelMe 是一个用 Javascript 编写的图像标注工具, 可以用于 在线 图像标注. 也就是说, LabelMe 可以部署在服务器, 然后使用浏览器进行访问. 与传统图像标注工具相比, 优势在于可以从任何地方访问该工具, 而且不需要在自己机器上安装或复制整个大型数据集. 我已将它部署在服务器, 以供外包人员能够远程进行标注, 而不需要把整个数据集拷贝给他们. 有如下优势  添加待标图片">
+
+
+
+
+
+
+  <link rel="canonical" href="http://luuil.github.io/2018/09/07/LabelMe-Docker-Online-Annotaion-Tool-Docker-Image/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>LabelMe-Docker: Online Annotaion Tool Docker Image | Luuil</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Luuil</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Luuil's blog</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://luuil.github.io/2018/09/07/LabelMe-Docker-Online-Annotaion-Tool-Docker-Image/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="L. Liu">
+      <meta itemprop="description" content="Plodding wins the race">
+      <meta itemprop="image" content="/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Luuil">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">LabelMe-Docker: Online Annotaion Tool Docker Image
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-09-07 10:58:21 / Modified: 14:08:39" itemprop="dateCreated datePublished" datetime="2018-09-07T10:58:21+08:00">2018-09-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Tool/" itemprop="url" rel="index"><span itemprop="name">Tool</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>LabelMe 是一个用 Javascript 编写的图像标注工具, 可以用于 <strong>在线</strong> 图像标注. 也就是说, LabelMe 可以部署在服务器, 然后使用浏览器进行访问.</p>
+<p>与传统图像标注工具相比, 优势在于可以从任何地方访问该工具, 而且不需要在自己机器上安装或复制整个大型数据集.</p>
+<p>我已将它部署在服务器, 以供外包人员能够远程进行标注, 而不需要把整个数据集拷贝给他们. 有如下优势</p>
+<ul>
+<li>添加待标图片和获取标注结果方便.</li>
+<li>降低外包人员招聘成本: 之前需要招聘专职标注人员到公司进行标注, 招聘难度较大.</li>
+<li>降低标注成本: 因为能够远程标注, 自由度高, 可以适当降低标注价格.</li>
+<li>降低标注数据泄露的风险: 待标图片的标注结果均在服务器上.</li>
+</ul>
+<p>截止目前(2018年9月), 已有 <code>1</code> 个项目(背景分割) 和 <code>10</code> 个标注人员使用该工具共标注了 <code>~7000</code> 张图片,<br>结果显示误标率较低, 约 <code>3/1000</code>, 多数情况为误操作.</p>
+<a id="more"></a>
+<h2 id="简易教程"><a href="#简易教程" class="headerlink" title="简易教程"></a>简易教程</h2><p>这里我们假设在本地已经创建了 <code>labelme-web</code> 镜像(如未创建, 请按后两节进行创建),<br>则运行下列命令即可部署在本地:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run -dit -p 1080:80 \</span><br><span class="line">-v /home/luuil/labelme/Images:/var/www/html/Images \</span><br><span class="line">labelme-web:latest</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注1<br>其中 <code>/home/luuil/labelme</code> 可替换为您自己的目录.</p>
+</blockquote>
+<blockquote>
+<p>注2<br>我们将 <code>Images</code> 文件夹映射到本地, 是为了更好地 <strong>添加</strong> 待标图片.</p>
+</blockquote>
+<h3 id="添加待标注图片"><a href="#添加待标注图片" class="headerlink" title="添加待标注图片"></a>添加待标注图片</h3><p>如果要添加新的待标注图片(LabelMe限制 <strong>必须为.jpg格式</strong>), 则进行如下操作:</p>
+<ul>
+<li>在 <code>/home/luuil/labelme/Images</code> 中新建文件夹, 比如 <code>example</code></li>
+<li>将图片数据放入 <code>/home/huya/labelme/Images/example</code></li>
+<li>使用浏览器访问 <code>http://127.0.0.1:1080/tool.html?mode=f&amp;folder=example</code></li>
+</ul>
+<h3 id="获取标注结果"><a href="#获取标注结果" class="headerlink" title="获取标注结果"></a>获取标注结果</h3><p>如果想要 <strong>获取</strong> 标注结果 , 需要先进入 Docker, 检查三个结果文件夹</p>
+<ul>
+<li><code>/var/www/html/Annotations</code></li>
+<li><code>/var/www/html/Masks</code></li>
+<li><code>/var/www/html/Scribbles</code></li>
+</ul>
+<p>不需要进入容器, 而快速从 Docker 容器内拷贝上述文件夹至本地的 <strong>当前文件夹</strong> 的方式为:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   sudo docker cp &lt;container_id&gt;:/var/www/html/Annotations . \</span><br><span class="line">&amp;&amp; sudo docker cp &lt;container_id&gt;:/var/www/html/Masks . \</span><br><span class="line">&amp;&amp; sudo docker cp &lt;container_id&gt;:/var/www/html/Scribbles .</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>&lt;container_id&gt;</code> 为部署容器的 ID.</p>
+</blockquote>
+<p>根据不同的标注方法, 可以在 <code>Annotations</code>, <code>Masks</code> 和 <code>Scribbles</code> 等文件夹中找到我们想要的结果, 具体有何区别, 待读者自己探索:).</p>
+<h2 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h2><p>使用第三节中的 Dockerfile, 创建一个 LabelMe Docker image. 随后, 直接运行镜像即可.</p>
+<h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker build -t <span class="string">"labelme-web"</span> .</span><br></pre></td></tr></table></figure>
+<h3 id="运行镜像-即创建容器"><a href="#运行镜像-即创建容器" class="headerlink" title="运行镜像(即创建容器)"></a>运行镜像(即创建容器)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run -dit -p 1080:80 \</span><br><span class="line">-v /home/luuil/labelme/Images:/var/www/html/Images \</span><br><span class="line">labelme-web:latest</span><br></pre></td></tr></table></figure>
+<h2 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h2><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># labelme Dockerfile</span></span><br><span class="line"><span class="comment"># base image</span></span><br><span class="line"><span class="keyword">FROM</span> ubuntu:<span class="number">14.04</span>.<span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># install dependencies</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> apt-get -y update</span></span><br><span class="line"><span class="bash">RUN apt-get install dialog apt-utils -y</span></span><br><span class="line"><span class="bash">RUN apt-get install -y --no-install-recommends \</span></span><br><span class="line"><span class="bash">    build-essential \</span></span><br><span class="line"><span class="bash">    git \</span></span><br><span class="line"><span class="bash">    apache2 \</span></span><br><span class="line"><span class="bash">    php5 \</span></span><br><span class="line"><span class="bash">    libapache2-mod-perl2 \</span></span><br><span class="line"><span class="bash">    libapache2-mod-php5</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># clean up</span></span></span><br><span class="line"><span class="bash">RUN apt-get clean \</span></span><br><span class="line"><span class="bash">    &amp;&amp; rm -rf /var/lib/apt/lists/* \</span></span><br><span class="line"><span class="bash">    &amp;&amp; rm /var/<span class="built_in">log</span>/dpkg.log</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># apache2 configuration</span></span></span><br><span class="line"><span class="bash">RUN a2enmod include</span></span><br><span class="line"><span class="bash">RUN a2enmod rewrite</span></span><br><span class="line"><span class="bash">RUN a2enmod cgi</span></span><br><span class="line"><span class="bash">RUN update-rc.d apache2 defaults</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># confd apache2 configuration</span></span></span><br><span class="line"><span class="bash">RUN rm /etc/apache2/sites-enabled/000-default.conf</span></span><br><span class="line"><span class="bash">ADD ubuntu.conf /etc/apache2/sites-enabled/000-default.conf</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># configure environment</span></span></span><br><span class="line"><span class="bash">ENV LANG=C</span></span><br><span class="line"><span class="bash">ENV APACHE_LOCK_DIR                     /var/lock/apache2</span></span><br><span class="line"><span class="bash">ENV APACHE_RUN_DIR                      /var/run/apache2</span></span><br><span class="line"><span class="bash">ENV APACHE_PID_FILE                     <span class="variable">$&#123;APACHE_RUN_DIR&#125;</span>/apache2.pid</span></span><br><span class="line"><span class="bash">ENV APACHE_LOG_DIR                      /var/<span class="built_in">log</span>/apache2</span></span><br><span class="line"><span class="bash">ENV APACHE_RUN_USER                     www-data</span></span><br><span class="line"><span class="bash">ENV APACHE_RUN_GROUP                    www-data</span></span><br><span class="line"><span class="bash">ENV APACHE_MAX_REQUEST_WORKERS          32</span></span><br><span class="line"><span class="bash">ENV APACHE_MAX_CONNECTIONS_PER_CHILD    1024</span></span><br><span class="line"><span class="bash">ENV APACHE_ALLOW_OVERRIDE               None</span></span><br><span class="line"><span class="bash">ENV APACHE_ALLOW_ENCODED_SLASHES        Off</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># deploy repo</span></span></span><br><span class="line"><span class="bash">RUN <span class="built_in">cd</span> /var/www/ \</span></span><br><span class="line"><span class="bash">    &amp;&amp; rm -rf html \</span></span><br><span class="line"><span class="bash">    &amp;&amp; git <span class="built_in">clone</span> https://github.com/CSAILVision/LabelMeAnnotationTool.git html \</span></span><br><span class="line"><span class="bash">    &amp;&amp; <span class="built_in">cd</span> html \</span></span><br><span class="line"><span class="bash">    &amp;&amp; make \</span></span><br><span class="line"><span class="bash">    &amp;&amp; chown -R <span class="variable">$&#123;APACHE_RUN_USER&#125;</span>:<span class="variable">$&#123;APACHE_RUN_GROUP&#125;</span> /var/www</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># port binding</span></span></span><br><span class="line"><span class="bash">EXPOSE 80</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># run</span></span></span><br><span class="line"><span class="bash">CMD [<span class="string">"/usr/sbin/apache2ctl"</span>, <span class="string">"-D"</span>, <span class="string">"FOREGROUND"</span>]</span></span><br></pre></td></tr></table></figure>
+<p>源码: <a href="https://github.com/CSAILVision/LabelMeAnnotationTool" target="_blank" rel="noopener">Github: LabelMeAnnotationTool</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Docker/" rel="tag"># Docker</a>
+          
+            <a href="/tags/LabelMe/" rel="tag"># LabelMe</a>
+          
+            <a href="/tags/Image-Annotation/" rel="tag"># Image Annotation</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/04/Github-Pages-with-Hexo/" rel="next" title="Github Pages with Hexo">
+                <i class="fa fa-chevron-left"></i> Github Pages with Hexo
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/avatar.gif"
+                alt="L. Liu" />
+            
+              <p class="site-author-name" itemprop="name">L. Liu</p>
+              <p class="site-description motion-element" itemprop="description">Plodding wins the race</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简易教程"><span class="nav-number">1.</span> <span class="nav-text">简易教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加待标注图片"><span class="nav-number">1.1.</span> <span class="nav-text">添加待标注图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取标注结果"><span class="nav-number">1.2.</span> <span class="nav-text">获取标注结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker"><span class="nav-number">2.</span> <span class="nav-text">Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建"><span class="nav-number">2.1.</span> <span class="nav-text">创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行镜像-即创建容器"><span class="nav-number">2.2.</span> <span class="nav-text">运行镜像(即创建容器)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dockerfile"><span class="nav-number">3.</span> <span class="nav-text">Dockerfile</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">L. Liu</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Pisces</a> v6.4.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
