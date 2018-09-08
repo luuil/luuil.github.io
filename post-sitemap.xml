@@ -7,8 +7,8 @@
     </url>
 
     <url>
-        <loc>http://luuil.github.io/2018/09/04/Useful-Plugins-for-Hexo/</loc>
-        <lastmod>2018-09-07T08:47:03.647Z</lastmod>
+        <loc>http://luuil.github.io/2018/09/08/Commonly-Used-Docker-Commands/</loc>
+        <lastmod>2018-09-08T09:10:25.276Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -16,7 +16,15 @@
 
     <url>
         <loc>http://luuil.github.io/2018/09/07/LabelMe-Docker-Online-Annotaion-Tool-Docker-Image/</loc>
-        <lastmod>2018-09-07T06:08:39.191Z</lastmod>
+        <lastmod>2018-09-08T08:30:07.815Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://luuil.github.io/2018/09/05/Useful-Plugins-for-Hexo/</loc>
+        <lastmod>2018-09-08T02:07:40.888Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
