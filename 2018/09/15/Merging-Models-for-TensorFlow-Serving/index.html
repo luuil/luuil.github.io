@@ -112,18 +112,18 @@
 
 
 
-  <meta name="description" content="常用的 Docker 命令本文集中了一些常用的 Docker 命令, 详细还请查看 官方文档.  查看容器: docker ps 查看镜像: docker images 运行镜像: docker run &amp;lt;IMAGE&amp;gt; 进入容器: docker exec -t -i &amp;lt;CONTAINER&amp;gt; /bin/bash  等">
-<meta name="keywords" content="Docker">
+  <meta name="description" content="This tool can merge TensorFlow frozen models(.pb file) into the same model. The advantage of doing this is that  When deploying, you only need to place the updated version of the model(merged model) i">
+<meta name="keywords" content="TensorFlow,TensorFlow Serving,Model">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Commonly Used Docker Commands">
-<meta property="og:url" content="http://luuil.github.io/2018/09/08/Commonly-Used-Docker-Commands/index.html">
+<meta property="og:title" content="Merging Models for TensorFlow Serving">
+<meta property="og:url" content="http://luuil.github.io/2018/09/15/Merging-Models-for-TensorFlow-Serving/index.html">
 <meta property="og:site_name" content="Luuil">
-<meta property="og:description" content="常用的 Docker 命令本文集中了一些常用的 Docker 命令, 详细还请查看 官方文档.  查看容器: docker ps 查看镜像: docker images 运行镜像: docker run &amp;lt;IMAGE&amp;gt; 进入容器: docker exec -t -i &amp;lt;CONTAINER&amp;gt; /bin/bash  等">
+<meta property="og:description" content="This tool can merge TensorFlow frozen models(.pb file) into the same model. The advantage of doing this is that  When deploying, you only need to place the updated version of the model(merged model) i">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-09-08T09:10:25.276Z">
+<meta property="og:updated_time" content="2018-09-15T02:59:12.060Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Commonly Used Docker Commands">
-<meta name="twitter:description" content="常用的 Docker 命令本文集中了一些常用的 Docker 命令, 详细还请查看 官方文档.  查看容器: docker ps 查看镜像: docker images 运行镜像: docker run &amp;lt;IMAGE&amp;gt; 进入容器: docker exec -t -i &amp;lt;CONTAINER&amp;gt; /bin/bash  等">
+<meta name="twitter:title" content="Merging Models for TensorFlow Serving">
+<meta name="twitter:description" content="This tool can merge TensorFlow frozen models(.pb file) into the same model. The advantage of doing this is that  When deploying, you only need to place the updated version of the model(merged model) i">
 
 
 
@@ -132,7 +132,7 @@
 
 
 
-  <link rel="canonical" href="http://luuil.github.io/2018/09/08/Commonly-Used-Docker-Commands/"/>
+  <link rel="canonical" href="http://luuil.github.io/2018/09/15/Merging-Models-for-TensorFlow-Serving/"/>
 
 
 
@@ -142,7 +142,7 @@
   };
 </script>
 
-  <title>Commonly Used Docker Commands | Luuil</title>
+  <title>Merging Models for TensorFlow Serving | Luuil</title>
   
 
 
@@ -365,7 +365,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://luuil.github.io/2018/09/08/Commonly-Used-Docker-Commands/">
+    <link itemprop="mainEntityOfPage" href="http://luuil.github.io/2018/09/15/Merging-Models-for-TensorFlow-Serving/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="L. Liu">
@@ -382,7 +382,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Commonly Used Docker Commands
+          <h1 class="post-title" itemprop="name headline">Merging Models for TensorFlow Serving
               
             
           </h1>
@@ -407,7 +407,7 @@
                 
               
 
-              <time title="Created: 2018-09-08 16:21:35 / Modified: 17:10:25" itemprop="dateCreated datePublished" datetime="2018-09-08T16:21:35+08:00">2018-09-08</time>
+              <time title="Created: 2018-09-15 10:22:30 / Modified: 10:59:12" itemprop="dateCreated datePublished" datetime="2018-09-15T10:22:30+08:00">2018-09-15</time>
             
 
             
@@ -429,7 +429,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Tutorial/" itemprop="url" rel="index"><span itemprop="name">Tutorial</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Tool/" itemprop="url" rel="index"><span itemprop="name">Tool</span></a></span>
 
                 
                 
@@ -444,10 +444,10 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/09/08/Commonly-Used-Docker-Commands/#comments" itemprop="discussionUrl">
+                <a href="/2018/09/15/Merging-Models-for-TensorFlow-Serving/#comments" itemprop="discussionUrl">
                 
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/09/08/Commonly-Used-Docker-Commands/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/09/15/Merging-Models-for-TensorFlow-Serving/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -475,63 +475,72 @@
       
 
       
-        <h2 id="常用的-Docker-命令"><a href="#常用的-Docker-命令" class="headerlink" title="常用的 Docker 命令"></a>常用的 Docker 命令</h2><p>本文集中了一些常用的 Docker 命令, 详细还请查看 <a href="https://docs.docker.com/engine/reference/commandline/docker/" target="_blank" rel="noopener">官方文档</a>.</p>
+        <p>This tool can merge TensorFlow frozen models(<code>.pb</code> file) into the same model. The advantage of doing this is that</p>
 <ul>
-<li>查看容器: <code>docker ps</code></li>
-<li>查看镜像: <code>docker images</code></li>
-<li>运行镜像: <code>docker run &lt;IMAGE&gt;</code></li>
-<li>进入容器: <code>docker exec -t -i &lt;CONTAINER&gt; /bin/bash</code></li>
+<li>When deploying, you only need to place the updated version of the model(<strong>merged model</strong>) in the corresponding location without restart the TensorFlow Serving service.</li>
+<li>Hot switching can be done easily. That is, the service will not be interrupted when updating the model.</li>
 </ul>
-<p>等</p>
+<p>See more details on <a href="https://github.com/luuil/Merging-Models-for-TensorFlow-Serving" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><ol>
+<li>Put frozen models(<code>.pb</code> file) into <code>./frozen</code> directory.</li>
+<li>Add serving information in <code>export_serving_model.py</code>.<ul>
+<li>Set update messages <code>UPDATE_MESSAGE</code>.</li>
+<li>Define a export(merging) function.</li>
+<li>Put <code>ServingInfo.export</code> decorator on export function(<strong>if not, then this model will not export</strong>).</li>
+</ul>
+</li>
+<li>Run <code>export_serving_model.py</code>.</li>
+<li>Copy the serving model <code>./serving/{version}</code> to your serving model directory on the server, it will be automatically loaded.</li>
+<li>Call it by RPC, such as <a href="https://grpc.io/" target="_blank" rel="noopener">gRPC</a>.</li>
+</ol>
 <a id="more"></a>
-<h3 id="查看本地容器"><a href="#查看本地容器" class="headerlink" title="查看本地容器"></a>查看本地容器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+<h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><p>Run script <code>export_serving_model.py</code> will <strong>automaticly</strong> generate(or modify) two files under directory <code>./serving</code>:</p>
 <ul>
-<li><a href="https://docs.docker.com/engine/reference/commandline/ps/" target="_blank" rel="noopener">docker ps</a></li>
+<li><code>current_version</code>: Stores the current version and update information. See <a href="./serving/README.md">details</a>.</li>
+<li><code>exported_models</code>: Exported models, one model for one line.</li>
 </ul>
-<h3 id="查看本地镜像"><a href="#查看本地镜像" class="headerlink" title="查看本地镜像"></a>查看本地镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+<h2 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h2><p>You do not need to konwn what the <code>hyaudio</code> model is. We just use it<br>to demonstrate the export functionality.</p>
+<p>We will export the same model two times to simulate the simultaneous<br>export multiple models.</p>
+<p>When you export multiple models, you should specify the</p>
 <ul>
-<li><a href="https://docs.docker.com/engine/reference/commandline/images/" target="_blank" rel="noopener">docker images</a></li>
+<li><code>signature_name</code> </li>
+<li><code>input_signature_map</code></li>
+<li><code>output_signature_map</code> </li>
 </ul>
-<h3 id="运行镜像-物理机映射到容器"><a href="#运行镜像-物理机映射到容器" class="headerlink" title="运行镜像: 物理机映射到容器"></a>运行镜像: 物理机映射到容器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -v /local/path:/inner/path  -d -i -t &lt;IMAGE&gt;</span><br></pre></td></tr></table></figure>
-<p>如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -v /home/luuil:/luuil  -dit ubuntu:latest</span><br></pre></td></tr></table></figure>
-<ul>
-<li><a href="https://docs.docker.com/engine/reference/commandline/run/" target="_blank" rel="noopener">docker run</a></li>
-</ul>
-<h3 id="进入指定容器"><a href="#进入指定容器" class="headerlink" title="进入指定容器"></a>进入指定容器</h3><p>形式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it &lt;CONTAINER&gt; /bin/bash</span><br></pre></td></tr></table></figure>
-<p>如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it 5cb8d5b22575 /bin/bash</span><br></pre></td></tr></table></figure>
-<ul>
-<li><a href="https://docs.docker.com/engine/reference/commandline/exec/" target="_blank" rel="noopener">docker exec</a></li>
-</ul>
-<h2 id="高级命令"><a href="#高级命令" class="headerlink" title="高级命令"></a>高级命令</h2><p>更不常用的那些命令.</p>
-<h3 id="运行-NVIDIA-DOCKER-并指定使用的GPU"><a href="#运行-NVIDIA-DOCKER-并指定使用的GPU" class="headerlink" title="运行 NVIDIA DOCKER, 并指定使用的GPU"></a>运行 NVIDIA DOCKER, 并指定使用的GPU</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --runtime=nvidia -e NVIDIA_VISIBLE_DEVICES=0,1 --rm nvidia/cuda nvidia-smi</span><br></pre></td></tr></table></figure>
-<ul>
-<li><a href="https://docs.docker.com/engine/reference/commandline/run/" target="_blank" rel="noopener">docker run</a></li>
-<li><a href="https://github.com/NVIDIA/nvidia-docker/wiki/Usage" target="_blank" rel="noopener">nvidia docker run</a></li>
-</ul>
-<h3 id="创建及发布镜像-私有仓库"><a href="#创建及发布镜像-私有仓库" class="headerlink" title="创建及发布镜像(私有仓库)"></a>创建及发布镜像(私有仓库)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker build -t &lt;IMAGE&gt; -f &lt;Dockerfile&gt; .</span><br><span class="line">docker tag &lt;SOURCE_IMAGE&gt;[:TAG] &lt;TARGET_IMAGE&gt;[:TAG]</span><br><span class="line">docker push NAME[:TAG]</span><br></pre></td></tr></table></figure>
-<p>如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker build -t src-image -f Dockerfile ..</span><br><span class="line">docker tag src-image:latest registry-host:5000/myadmin/tgt-image:latest</span><br><span class="line">docker push registry-host:5000/myadmin/tgt-image:latest</span><br></pre></td></tr></table></figure>
-<ul>
-<li><a href="https://docs.docker.com/engine/reference/commandline/build/" target="_blank" rel="noopener">docker build</a></li>
-<li><a href="https://docs.docker.com/engine/reference/commandline/tag/" target="_blank" rel="noopener">docker tag</a></li>
-<li><a href="https://docs.docker.com/engine/reference/commandline/push/" target="_blank" rel="noopener">docker push</a></li>
-</ul>
-<h3 id="将变更后的镜像保存-docker-commit"><a href="#将变更后的镜像保存-docker-commit" class="headerlink" title="将变更后的镜像保存: docker commit"></a>将变更后的镜像保存: <code>docker commit</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker commit -m &quot;commit message&quot; &lt;CONTAINER&gt; [REPOSITORY[:TAG]]</span><br></pre></td></tr></table></figure>
-<ul>
-<li><a href="https://docs.docker.com/engine/reference/commandline/commit/" target="_blank" rel="noopener">docker commit</a></li>
-</ul>
-<h3 id="根据-Dockerfile-创建镜像-docker-build"><a href="#根据-Dockerfile-创建镜像-docker-build" class="headerlink" title="根据 Dockerfile 创建镜像: docker build"></a>根据 Dockerfile 创建镜像: <code>docker build</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t &quot;test_image:latest&quot; .</span><br></pre></td></tr></table></figure>
-<ul>
-<li><a href="https://docs.docker.com/engine/reference/commandline/build/" target="_blank" rel="noopener">docker build</a></li>
-</ul>
-<h2 id="异常状况"><a href="#异常状况" class="headerlink" title="异常状况"></a>异常状况</h2><p>下面内容属于容器异常时的一些解决办法.</p>
-<h3 id="停止-Restarting-状态的容器"><a href="#停止-Restarting-状态的容器" class="headerlink" title="停止 Restarting 状态的容器"></a>停止 <code>Restarting</code> 状态的容器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker update --restart=no &lt;CONTAINER&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><a href="https://docs.docker.com/engine/reference/commandline/update/" target="_blank" rel="noopener">docker update</a></li>
-</ul>
+<p>parameters. They refer to <strong>signature for serving</strong>, <strong>entry point of the model</strong><br>and <strong>output point of the model</strong> respectively. </p>
+<table>
+<thead>
+<tr>
+<th>model</th>
+<th>signature_name</th>
+<th>input_signature_map</th>
+<th>output_signature_map</th>
+<th>frozen location(<code>./frozen</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[model description]</td>
+<td>hyaudio_1</td>
+<td><code>&#39;inputs&#39;:&#39;hyaudio/vggish_input:0&#39;</code></td>
+<td><code>&#39;classes&#39;:&#39;hyaudio/predict_classes:0&#39;, &#39;probs&#39;:&#39;hyaudio/predict_probs:0&#39;</code></td>
+<td><code>audio/hyaudio.pb</code></td>
+</tr>
+<tr>
+<td>[model description]</td>
+<td>hyaudio_2</td>
+<td><code>&#39;inputs&#39;:&#39;hyaudio/vggish_input:0&#39;</code></td>
+<td><code>&#39;classes&#39;:&#39;hyaudio/predict_classes:0&#39;, &#39;probs&#39;:&#39;hyaudio/predict_probs:0&#39;</code></td>
+<td><code>audio/hyaudio.pb</code></td>
+</tr>
+</tbody>
+</table>
+<p>You can export same model twice(or more) when give it a different <code>signature_name</code> as shown above.</p>
+<h2 id="Check-the-serving-model"><a href="#Check-the-serving-model" class="headerlink" title="Check the serving model"></a>Check the serving model</h2><p>We use the <a href="https://www.tensorflow.org/versions/r1.2/programmers_guide/saved_model_cli/" target="_blank" rel="noopener">SavedModel CLI</a> tool to check our exported models.</p>
+<p>To show all available SignatureDef keys in a MetaGraphDef.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">saved_model_cli show --dir ./serving/1 --tag_set serve</span><br></pre></td></tr></table></figure>
+<p>To show all inputs and outputs TensorInfo for a specific SignatureDef, pass in the SignatureDef key to signature_def option. This is very useful when you want to know the tensor key value, dtype and shape of the input tensors for executing the computation graph later.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">saved_model_cli show --dir ./serving/1 --tag_set serve --signature_def hyaudio_1</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -552,7 +561,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Docker/" rel="tag"># Docker</a>
+            <a href="/tags/TensorFlow/" rel="tag"># TensorFlow</a>
+          
+            <a href="/tags/TensorFlow-Serving/" rel="tag"># TensorFlow Serving</a>
+          
+            <a href="/tags/Model/" rel="tag"># Model</a>
           
         </div>
       
@@ -565,8 +578,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/07/LabelMe-Docker-Online-Annotaion-Tool-Docker-Image/" rel="next" title="LabelMe-Docker: Online Annotaion Tool Docker Image">
-                <i class="fa fa-chevron-left"></i> LabelMe-Docker: Online Annotaion Tool Docker Image
+              <a href="/2018/09/08/Commonly-Used-Docker-Commands/" rel="next" title="Commonly Used Docker Commands">
+                <i class="fa fa-chevron-left"></i> Commonly Used Docker Commands
               </a>
             
           </div>
@@ -574,10 +587,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/15/Merging-Models-for-TensorFlow-Serving/" rel="prev" title="Merging Models for TensorFlow Serving">
-                Merging Models for TensorFlow Serving <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -774,7 +783,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用的-Docker-命令"><span class="nav-number">1.</span> <span class="nav-text">常用的 Docker 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看本地容器"><span class="nav-number">1.1.</span> <span class="nav-text">查看本地容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看本地镜像"><span class="nav-number">1.2.</span> <span class="nav-text">查看本地镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行镜像-物理机映射到容器"><span class="nav-number">1.3.</span> <span class="nav-text">运行镜像: 物理机映射到容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进入指定容器"><span class="nav-number">1.4.</span> <span class="nav-text">进入指定容器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级命令"><span class="nav-number">2.</span> <span class="nav-text">高级命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#运行-NVIDIA-DOCKER-并指定使用的GPU"><span class="nav-number">2.1.</span> <span class="nav-text">运行 NVIDIA DOCKER, 并指定使用的GPU</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建及发布镜像-私有仓库"><span class="nav-number">2.2.</span> <span class="nav-text">创建及发布镜像(私有仓库)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将变更后的镜像保存-docker-commit"><span class="nav-number">2.3.</span> <span class="nav-text">将变更后的镜像保存: docker commit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#根据-Dockerfile-创建镜像-docker-build"><span class="nav-number">2.4.</span> <span class="nav-text">根据 Dockerfile 创建镜像: docker build</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常状况"><span class="nav-number">3.</span> <span class="nav-text">异常状况</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#停止-Restarting-状态的容器"><span class="nav-number">3.1.</span> <span class="nav-text">停止 Restarting 状态的容器</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Usage"><span class="nav-number">1.</span> <span class="nav-text">Usage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Note"><span class="nav-number">2.</span> <span class="nav-text">Note</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Test"><span class="nav-number">3.</span> <span class="nav-text">Test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Check-the-serving-model"><span class="nav-number">4.</span> <span class="nav-text">Check the serving model</span></a></li></ol></div>
             
 
           </div>
@@ -938,9 +947,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://luuil.github.io/2018/09/08/Commonly-Used-Docker-Commands/';
-        this.page.identifier = '2018/09/08/Commonly-Used-Docker-Commands/';
-        this.page.title = 'Commonly Used Docker Commands';
+        this.page.url = 'http://luuil.github.io/2018/09/15/Merging-Models-for-TensorFlow-Serving/';
+        this.page.identifier = '2018/09/15/Merging-Models-for-TensorFlow-Serving/';
+        this.page.title = 'Merging Models for TensorFlow Serving';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');
