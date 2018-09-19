@@ -8,6 +8,7 @@
         <category>Tool</category>
       </categories>
       <tags>
+        <tag>Python</tag>
         <tag>TensorFlow</tag>
         <tag>TensorFlow Serving</tag>
         <tag>Model</tag>
@@ -16,7 +17,7 @@
   <entry>
     <title><![CDATA[Commonly Used Docker Commands]]></title>
     <url>%2F2018%2F09%2F08%2FCommonly-Used-Docker-Commands%2F</url>
-    <content type="text"><![CDATA[常用的 Docker 命令本文集中了一些常用的 Docker 命令, 详细还请查看 官方文档. 查看容器: docker ps 查看镜像: docker images 运行镜像: docker run &lt;IMAGE&gt; 进入容器: docker exec -t -i &lt;CONTAINER&gt; /bin/bash 等 查看本地容器1docker ps docker ps 查看本地镜像1docker images docker images 运行镜像: 物理机映射到容器1docker run -v /local/path:/inner/path -d -i -t &lt;IMAGE&gt; 如 1docker run -v /home/luuil:/luuil -dit ubuntu:latest docker run 进入指定容器形式 1docker exec -it &lt;CONTAINER&gt; /bin/bash 如 1docker exec -it 5cb8d5b22575 /bin/bash docker exec 高级命令更不常用的那些命令. 运行 NVIDIA DOCKER, 并指定使用的GPU1docker run --runtime=nvidia -e NVIDIA_VISIBLE_DEVICES=0,1 --rm nvidia/cuda nvidia-smi docker run nvidia docker run 创建及发布镜像(私有仓库)123docker build -t &lt;IMAGE&gt; -f &lt;Dockerfile&gt; .docker tag &lt;SOURCE_IMAGE&gt;[:TAG] &lt;TARGET_IMAGE&gt;[:TAG]docker push NAME[:TAG] 如 123docker build -t src-image -f Dockerfile ..docker tag src-image:latest registry-host:5000/myadmin/tgt-image:latestdocker push registry-host:5000/myadmin/tgt-image:latest docker build docker tag docker push 将变更后的镜像保存: docker commit1docker commit -m &quot;commit message&quot; &lt;CONTAINER&gt; [REPOSITORY[:TAG]] docker commit 根据 Dockerfile 创建镜像: docker build1docker build -t &quot;test_image:latest&quot; . docker build 异常状况下面内容属于容器异常时的一些解决办法. 停止 Restarting 状态的容器1docker update --restart=no &lt;CONTAINER&gt; docker update]]></content>
+    <content type="text"><![CDATA[常用的 Docker 命令本文集中了一些常用的 Docker 命令, 详细还请查看 官方文档. 查看容器: docker ps 查看镜像: docker images 运行镜像: docker run &lt;IMAGE&gt; 进入容器: docker exec -t -i &lt;CONTAINER&gt; /bin/bash 查看本地容器1docker ps docker ps 查看本地镜像1docker images docker images 运行镜像: 物理机映射到容器1docker run -v /local/path:/inner/path -d -i -t &lt;IMAGE&gt; 如 1docker run -v /home/luuil:/luuil -dit ubuntu:latest docker run 进入指定容器形式 1docker exec -it &lt;CONTAINER&gt; /bin/bash 如 1docker exec -it 5cb8d5b22575 /bin/bash docker exec 高级命令更不常用的那些命令. 运行 NVIDIA DOCKER, 并指定使用的GPU1docker run --runtime=nvidia -e NVIDIA_VISIBLE_DEVICES=0,1 --rm nvidia/cuda nvidia-smi docker run nvidia docker run 创建及发布镜像(私有仓库)123docker build -t &lt;IMAGE&gt; -f &lt;Dockerfile&gt; .docker tag &lt;SOURCE_IMAGE&gt;[:TAG] &lt;TARGET_IMAGE&gt;[:TAG]docker push NAME[:TAG] 如 123docker build -t src-image -f Dockerfile ..docker tag src-image:latest registry-host:5000/myadmin/tgt-image:latestdocker push registry-host:5000/myadmin/tgt-image:latest docker build docker tag docker push 将变更后的镜像保存: docker commit1docker commit -m &quot;commit message&quot; &lt;CONTAINER&gt; [REPOSITORY[:TAG]] docker commit 根据 Dockerfile 创建镜像: docker build1docker build -t &quot;test_image:latest&quot; . docker build 异常状况下面内容属于容器异常时的一些解决办法. 停止 Restarting 状态的容器1docker update --restart=no &lt;CONTAINER&gt; docker update]]></content>
       <categories>
         <category>Tutorial</category>
       </categories>
