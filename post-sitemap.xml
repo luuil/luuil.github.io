@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://luuil.github.io/2018/09/07/LabelMe-Docker-Online-Annotaion-Tool-Docker-Image/</loc>
+        <lastmod>2018-12-05T03:29:15.606Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://luuil.github.io/2018/09/15/Merging-Models-for-TensorFlow-Serving/</loc>
         <lastmod>2018-09-19T02:41:28.938Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -17,14 +25,6 @@
     <url>
         <loc>http://luuil.github.io/2018/09/08/Commonly-Used-Docker-Commands/</loc>
         <lastmod>2018-09-15T03:30:03.144Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://luuil.github.io/2018/09/07/LabelMe-Docker-Online-Annotaion-Tool-Docker-Image/</loc>
-        <lastmod>2018-09-08T08:30:07.815Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

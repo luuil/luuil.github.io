@@ -114,18 +114,18 @@
 
   <meta name="description" content="Plodding wins the race">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Luuil">
+<meta property="og:title" content="Leon">
 <meta property="og:url" content="http://luuil.github.io/index.html">
-<meta property="og:site_name" content="Luuil">
+<meta property="og:site_name" content="Leon">
 <meta property="og:description" content="Plodding wins the race">
 <meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Luuil">
+<meta name="twitter:title" content="Leon">
 <meta name="twitter:description" content="Plodding wins the race">
 
 
 
-  <link rel="alternate" href="/feed.json" title="Luuil" type="application/atom+xml" />
+  <link rel="alternate" href="/feed.json" title="Leon" type="application/atom+xml" />
 
 
 
@@ -140,7 +140,7 @@
   };
 </script>
 
-  <title>Luuil</title>
+  <title>Leon</title>
   
 
 
@@ -199,13 +199,13 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Luuil</span>
+        <span class="site-title">Leon</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
     
       
-        <p class="site-subtitle">Luuil's blog</p>
+        <p class="site-subtitle">May happiness be with you</p>
       
     
   </div>
@@ -367,13 +367,13 @@
     <link itemprop="mainEntityOfPage" href="http://luuil.github.io/2018/09/15/Merging-Models-for-TensorFlow-Serving/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="L. Liu">
+      <meta itemprop="name" content="Leon Lau">
       <meta itemprop="description" content="Plodding wins the race">
-      <meta itemprop="image" content="/avatar.gif">
+      <meta itemprop="image" content="/chai.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Luuil">
+      <meta itemprop="name" content="Leon">
     </span>
 
     
@@ -558,13 +558,13 @@
     <link itemprop="mainEntityOfPage" href="http://luuil.github.io/2018/09/08/Commonly-Used-Docker-Commands/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="L. Liu">
+      <meta itemprop="name" content="Leon Lau">
       <meta itemprop="description" content="Plodding wins the race">
-      <meta itemprop="image" content="/avatar.gif">
+      <meta itemprop="image" content="/chai.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Luuil">
+      <meta itemprop="name" content="Leon">
     </span>
 
     
@@ -738,13 +738,13 @@
     <link itemprop="mainEntityOfPage" href="http://luuil.github.io/2018/09/07/LabelMe-Docker-Online-Annotaion-Tool-Docker-Image/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="L. Liu">
+      <meta itemprop="name" content="Leon Lau">
       <meta itemprop="description" content="Plodding wins the race">
-      <meta itemprop="image" content="/avatar.gif">
+      <meta itemprop="image" content="/chai.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Luuil">
+      <meta itemprop="name" content="Leon">
     </span>
 
     
@@ -798,7 +798,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-09-08 16:30:07" itemprop="dateModified" datetime="2018-09-08T16:30:07+08:00">2018-09-08</time>
+                <time title="Modified: 2018-12-05 11:29:15" itemprop="dateModified" datetime="2018-12-05T11:29:15+08:00">2018-12-05</time>
               
             
           </span>
@@ -851,15 +851,13 @@
       
         
           <p>LabelMe 是一个用 Javascript 编写的图像标注工具, 可以用于 <strong>在线</strong> 图像标注. 也就是说, LabelMe 可以部署在服务器, 然后使用浏览器进行访问.</p>
-<p>与传统图像标注工具相比, 优势在于可以从任何地方访问该工具, 而且不需要在自己机器上安装或复制整个大型数据集.</p>
-<p>我在空闲时间调研了该工具, 探索了其用法, 创建了此 docker 镜像, 并写成文档进行记录. 在该工具调研之后的 4 个月得到了团队的应用, 现我已将它部署在服务器, 以供外包人员能够远程进行标注. 它有如下优势</p>
+<p>与传统图像标注工具相比, 优势在于可以从任何地方访问该工具, 而且不需要在自己机器上安装或复制整个大型数据集. 它有如下优势</p>
 <ul>
 <li>添加待标图片和获取标注结果方便.</li>
 <li>降低外包人员招聘成本: 之前需要招聘专职标注人员到公司进行标注, 招聘难度大.</li>
 <li>降低标注成本: 因为能够远程标注, 自由度高, 可以适当降低标注价格.</li>
 <li>降低标注数据泄露的风险: 待标图片和标注结果均在服务器上.</li>
 </ul>
-<p>截止目前(2018年9月), 已有 <code>1</code> 个项目(背景分割) 和 <code>10</code> 个标注人员使用该工具共标注了 <code>~7000</code> 张图片,<br>结果显示误标率较低, 约 <code>3/1000</code>, 且多数情况为误操作.</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/09/07/LabelMe-Docker-Online-Annotaion-Tool-Docker-Image/#more" rel="contents">
@@ -921,13 +919,13 @@
     <link itemprop="mainEntityOfPage" href="http://luuil.github.io/2018/09/05/Useful-Plugins-for-Hexo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="L. Liu">
+      <meta itemprop="name" content="Leon Lau">
       <meta itemprop="description" content="Plodding wins the race">
-      <meta itemprop="image" content="/avatar.gif">
+      <meta itemprop="image" content="/chai.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Luuil">
+      <meta itemprop="name" content="Leon">
     </span>
 
     
@@ -1101,13 +1099,13 @@
     <link itemprop="mainEntityOfPage" href="http://luuil.github.io/2018/09/04/Github-Pages-with-Hexo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="L. Liu">
+      <meta itemprop="name" content="Leon Lau">
       <meta itemprop="description" content="Plodding wins the race">
-      <meta itemprop="image" content="/avatar.gif">
+      <meta itemprop="image" content="/chai.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Luuil">
+      <meta itemprop="name" content="Leon">
     </span>
 
     
@@ -1310,10 +1308,10 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/avatar.gif"
-                alt="L. Liu" />
+                src="/chai.jpg"
+                alt="Leon Lau" />
             
-              <p class="site-author-name" itemprop="name">L. Liu</p>
+              <p class="site-author-name" itemprop="name">Leon Lau</p>
               <p class="site-description motion-element" itemprop="description">Plodding wins the race</p>
           </div>
 
@@ -1405,12 +1403,17 @@
             <div class="links-of-author motion-element">
               
                 <span class="links-of-author-item">
-                  <a href="https://github.com/luuil" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i></a>
+                  <a href="https://github.com/luuil/" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i></a>
                   
                 </span>
               
                 <span class="links-of-author-item">
                   <a href="mailto:luuil@outlook.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.linkedin.com/in/lu-l-288a6184/" target="_blank" title="Linkedin"><i class="fa fa-fw fa-linkedin"></i></a>
                   
                 </span>
               
@@ -1449,7 +1452,7 @@
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">L. Liu</span>
+  <span class="author" itemprop="copyrightHolder">Leon Lau</span>
 
   
 
