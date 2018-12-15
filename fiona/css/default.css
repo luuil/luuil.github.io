@@ -25,7 +25,8 @@ body {
 .swiper-slide, .album-pic, .slide-pic {
   text-align: center;
   font-size: 24px;
-  background: #E2E4E1;
+  background: #eee;
+  /*background: #E2E4E1;*/
 
   /* Center slide text vertically */
   display: -webkit-box;
@@ -63,8 +64,8 @@ body {
 .text {
   opacity: 1.0;
   font-size: 48px;
-  /*color: #111B24;*/
-  color: #FFF;
+  color: #111B24;
+  /*color: #fff;*/
 }
 .title {
   font-size: 64px;
@@ -89,7 +90,7 @@ body {
 }
 .swiper-slide .wrapper .mask{
   z-index: 1;
-  background: rgba(110, 141, 158, 0.6);
+  background: rgba(210, 219, 221, 0.85);
   right: 0;
   bottom: 0;
 }
