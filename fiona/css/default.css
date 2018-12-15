@@ -6,7 +6,7 @@ body {
   background: #B8C4B8;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 14px;
-  color: #8995A5;
+  color: #111B24;
   margin: 0;
   padding: 0;
 }
@@ -22,9 +22,9 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
-.swiper-slide, .album-pic, .slide-illustrate {
+.swiper-slide, .album-pic, .slide-pic {
   text-align: center;
-  font-size: 18px;
+  font-size: 24px;
   background: #E2E4E1;
 
   /* Center slide text vertically */
@@ -49,29 +49,59 @@ body {
   background-position: center;
 }
 .slide-pic {
-  width: 50%;
+  width: 100%;
   height: 100%;
-  float: left;
-  resize: both;
-  overflow: auto;
-  background: transparent;
-  background-repeat: no-repeat;
+  /*opacity: 0.2;*/
+  /*background: transparent;*/
+  /*background-repeat: no-repeat;*/
   background-position: center;
-}
-.slide-illustrate {
-  width: 50%;
-  height: 100%;
-  float: right;
 }
 .digit {
   font-size: 24px;
   color: #BFB5AC;
 }
+.text {
+  opacity: 1.0;
+  font-size: 48px;
+  /*color: #111B24;*/
+  color: #FFF;
+}
 .title {
   font-size: 64px;
   color: #BFB5AC;
 }
-.title-1 {
+.text-1 {
   font-size: 64px;
   color: #975056;
+}
+.swiper-slide {
+  position: relative;
+}
+.swiper-slide .wrapper{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.swiper-slide .wrapper .bg, .swiper-slide .wrapper .mask, .swiper-slide .wrapper .text{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.swiper-slide .wrapper .mask{
+  z-index: 1;
+  background: rgba(110, 141, 158, 0.6);
+  right: 0;
+  bottom: 0;
+}
+.swiper-slide .wrapper .text{
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.icon{
+  display: block;
+  margin: 0 auto 50px;
 }
