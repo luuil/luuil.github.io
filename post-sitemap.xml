@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://luuil.github.io/2018/12/28/Docker-multi-stage-builds/</loc>
+        <lastmod>2018-12-28T03:02:00.580Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://luuil.github.io/2018/09/07/LabelMe-Docker-Online-Annotaion-Tool-Docker-Image/</loc>
         <lastmod>2018-12-05T03:29:15.606Z</lastmod>
         <changefreq>weekly</changefreq>
