@@ -22,10 +22,10 @@
         <category>Tool</category>
       </categories>
       <tags>
-        <tag>TensorFlow</tag>
-        <tag>Python</tag>
         <tag>TensorFlow Serving</tag>
+        <tag>TensorFlow</tag>
         <tag>Model</tag>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -71,8 +71,8 @@
         <category>Tutorial</category>
       </categories>
       <tags>
-        <tag>Hexo</tag>
         <tag>Github</tag>
+        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
