@@ -7,6 +7,22 @@
     </url>
 
     <url>
+        <loc>http://luuil.github.io/2018/09/19/Python-Decorator/</loc>
+        <lastmod>2019-11-05T04:07:40.447Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://luuil.github.io/2018/09/05/TensorFlow-Audio-Classification/</loc>
+        <lastmod>2019-11-05T04:05:15.979Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://luuil.github.io/2018/12/28/Docker-multi-stage-builds/</loc>
         <lastmod>2018-12-28T03:02:00.580Z</lastmod>
         <changefreq>weekly</changefreq>

@@ -15,6 +15,18 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[Python: Decorator]]></title>
+    <url>%2F2018%2F09%2F19%2FPython-Decorator%2F</url>
+    <content type="text"><![CDATA[Python 的修饰器的英文名叫 Decorator, 当你看到这个英文名的时候, 你可能会把其跟 Design Pattern 里的 Decorator 搞混了, 其实这是完全不同的两个东西. 在介绍装饰器之前, 我们先来点直观的认识, 下面一个 Python 修饰器的示例代码 1234567891011121314def tags(tag_name): def tags_decorator(func): def func_wrapper(name): return "&lt;&#123;0&#125;&gt;&#123;1&#125;&lt;/&#123;0&#125;&gt;".format(tag_name, func(name)) return func_wrapper return tags_decorator@tags("div")@tags("p")@tags("span")def get_text(name): return "Hello " + nameprint(get_text("John")) 运行这段代码时, 会有如下输出 1&lt;div&gt;&lt;p&gt;&lt;span&gt;Hello John&lt;/span&gt;&lt;/p&gt;&lt;/div&gt; 参考: https://www.cnblogs.com/zh605929205/p/7704902.html 未完待续…]]></content>
+      <categories>
+        <category>Tutorial</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Decorator</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Merging Models for TensorFlow Serving]]></title>
     <url>%2F2018%2F09%2F15%2FMerging-Models-for-TensorFlow-Serving%2F</url>
     <content type="text"><![CDATA[This tool can merge TensorFlow frozen models(.pb file) into the same model. The advantage of doing this is that When deploying, you only need to place the updated version of the model(merged model) in the corresponding location without restart the TensorFlow Serving service. Hot switching can be done easily. That is, the service will not be interrupted when updating the model. See more details on GitHub. Usage Put frozen models(.pb file) into ./frozen directory. Add serving information in export_serving_model.py. Set update messages UPDATE_MESSAGE. Define a export(merging) function. Put ServingInfo.export decorator on export function(if not, then this model will not export). Run export_serving_model.py. Copy the serving model ./serving/{version} to your serving model directory on the server, it will be automatically loaded. Call it by RPC, such as gRPC. NoteRun script export_serving_model.py will automaticly generate(or modify) two files under directory ./serving: current_version: Stores the current version and update information. See details. exported_models: Exported models, one model for one line. TestYou do not need to konwn what the hyaudio model is. We just use itto demonstrate the export functionality. We will export the same model two times to simulate the simultaneousexport multiple models. When you export multiple models, you should specify the signature_name input_signature_map output_signature_map parameters. They refer to signature for serving, entry point of the modeland output point of the model respectively. model signature_name input_signature_map output_signature_map frozen location(./frozen) [model description] hyaudio_1 &#39;inputs&#39;:&#39;hyaudio/vggish_input:0&#39; &#39;classes&#39;:&#39;hyaudio/predict_classes:0&#39;, &#39;probs&#39;:&#39;hyaudio/predict_probs:0&#39; audio/hyaudio.pb [model description] hyaudio_2 &#39;inputs&#39;:&#39;hyaudio/vggish_input:0&#39; &#39;classes&#39;:&#39;hyaudio/predict_classes:0&#39;, &#39;probs&#39;:&#39;hyaudio/predict_probs:0&#39; audio/hyaudio.pb You can export same model twice(or more) when give it a different signature_name as shown above. Check the serving modelWe use the SavedModel CLI tool to check our exported models. To show all available SignatureDef keys in a MetaGraphDef. 1saved_model_cli show --dir ./serving/1 --tag_set serve To show all inputs and outputs TensorInfo for a specific SignatureDef, pass in the SignatureDef key to signature_def option. This is very useful when you want to know the tensor key value, dtype and shape of the input tensors for executing the computation graph later. 1saved_model_cli show --dir ./serving/1 --tag_set serve --signature_def hyaudio_1]]></content>
@@ -50,6 +62,19 @@
         <tag>Docker</tag>
         <tag>LabelMe</tag>
         <tag>Image Annotation</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[TensorFlow Audio Classification]]></title>
+    <url>%2F2018%2F09%2F05%2FTensorFlow-Audio-Classification%2F</url>
+    <content type="text"><![CDATA[此项目源自2018年5月公司的一个实际项目: 检测主播是否在唱歌, 即通过直播间的声音信号判定主播当前时间段是否在唱歌. 该项目已于2018年6月20日上线, 准确率为 ~93%. 在此之前, 我没有语音相关的经验, 不仅如此, 公司内部也没有相关技术储备. 只能凭借经验和 sense 去查找解决方案, 经过 1 星期的调研, 确定了使用深度学习, 并选定 特征提取 + 分类 这种比较传统但成熟的方案. 最后, 我与一个实习生经过一个月的努力, 在 deadline 之前完成上线. 具体地 特征提取 阶段选用 VGGish 网络结构, 这是由 Google 开源并在 YouTube8M 中实际应用的技术; 分类 阶段采用非常简单的结构: 2个全连接层 + 1个Softmax层 , 因为 VGGish 提取的特征(embedding)够紧凑, 包含的信息足够多, 可以应对一个二分类问题(唱歌和非唱歌); 在这篇文章中, 我将介绍关于这个项目涉及的主要问题和解决办法, 以及怎样通过一些技巧将准确率从 70% 提升至 93%. 并以一个公开数据集 UrbanSound 作为例子进行讲解. 开源地址: https://github.com/luuil/tensorflow-audio-classification 前言在一段直播类视频中，聊天(闲聊, 互动)所占时间比重是最大的, 大约80%, 其余20%包括唱歌, 跳舞, 其他等. 所以, 对于比较喜欢听唱歌的观众来讲, 怎样迅速找到 正在唱歌 的片段是一个可以做的需求. 针对该问题, 本文提出了利用深度学习对直播间声音信号进行分类的方案, 下面进行详细介绍. 摘要要解决 是否在唱歌 问题, 有如下两个先决条件 这是一个语音项目, 公司没相关技术储备, 可选择的方法不详. 如何获取语音数据, 并处理. 为了解决上述两个问题, 我们(与实习生)进行了分工, 我调研了语音项目相关的技术, 实习生负责数据的采集的处理. 最后选定 识别方案：VGGish + 简单分类器（自定义）. 数据来源的两个途径： 利用公开数据集做 pre-train：例如 UrbanSound. 抽取视频中的音频作为 finetune 数据来源：标注唱歌部分(时间区间), 训练时会将这些区间进一步拆分为等长的片段. 概述使用场景本文提出的算法, 使用场景如下 识别声音片段是否为 唱歌/其他 状态 算法流程使用深度学习(机器学习)开发时一般分为 训练 和 预测 两个阶段. 训练是指利用算法在已有数据上拟合(学习)出一些规律或法则(模型), 预测是指使用训练生成的模型对新数据进行预测. 训练分为三步: 基于梅尔倒频谱算法, 提取声音片段的特征, 并将其转换成频谱图片. 将频谱图片输入至 VGGish 网络(直接加载已有 checkpoint)进一步提取图形特征(embedding) 将 embedding 输入 简单分类网络 进行训练, 得到分类模型 预测与训练除第三步外完全一致: 先提取声音特征, 然后加载训练好的模型即可获得预测结果. 未完待续…]]></content>
+      <categories>
+        <category>Tutorial</category>
+      </categories>
+      <tags>
+        <tag>vggish</tag>
+        <tag>audioset</tag>
+        <tag>audio-classification</tag>
       </tags>
   </entry>
   <entry>

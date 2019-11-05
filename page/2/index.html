@@ -364,6 +364,367 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://luuil.github.io/2018/09/05/TensorFlow-Audio-Classification/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leon Lau">
+      <meta itemprop="description" content="Plodding wins the race">
+      <meta itemprop="image" content="/chai.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Leon">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/05/TensorFlow-Audio-Classification/" itemprop="url">
+                  TensorFlow Audio Classification
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-09-05 22:46:43" itemprop="dateCreated datePublished" datetime="2018-09-05T22:46:43+08:00">2018-09-05</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-11-05 12:05:15" itemprop="dateModified" datetime="2019-11-05T12:05:15+08:00">2019-11-05</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Tutorial/" itemprop="url" rel="index"><span itemprop="name">Tutorial</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>此项目源自2018年5月公司的一个实际项目: <strong>检测主播是否在唱歌</strong>, 即通过直播间的声音信号判定主播当前时间段是否在唱歌. 该项目已于2018年6月20日上线, 准确率为 <code>~93%</code>.</p>
+<p>在此之前, 我没有语音相关的经验, 不仅如此, 公司内部也没有相关技术储备. 只能凭借经验和 sense 去查找解决方案, 经过 1 星期的调研, 确定了使用深度学习, 并选定 <strong>特征提取 + 分类</strong> 这种比较传统但成熟的方案. 最后, 我与一个实习生经过一个月的努力, 在 deadline 之前完成上线. 具体地</p>
+<ul>
+<li><strong>特征提取</strong> 阶段选用 <a href="https://github.com/tensorflow/models/tree/master/research/audioset" target="_blank" rel="noopener">VGGish</a> 网络结构, 这是由 Google 开源并在 <a href="https://research.google.com/youtube8m" target="_blank" rel="noopener">YouTube8M</a> 中实际应用的技术;</li>
+<li><strong>分类</strong> 阶段采用非常简单的结构: <code>2个全连接层 + 1个Softmax层</code> , 因为 VGGish 提取的特征(embedding)够紧凑, 包含的信息足够多, 可以应对一个二分类问题(唱歌和非唱歌);</li>
+</ul>
+<p>在这篇文章中, 我将介绍关于这个项目涉及的主要问题和解决办法, 以及怎样通过一些技巧将准确率从 <strong>70% 提升至 93%</strong>. 并以一个公开数据集 <a href="https://serv.cusp.nyu.edu/projects/urbansounddataset/" target="_blank" rel="noopener">UrbanSound</a> 作为例子进行讲解.</p>
+<p>开源地址: <a href="https://github.com/luuil/tensorflow-audio-classification" target="_blank" rel="noopener">https://github.com/luuil/tensorflow-audio-classification</a></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/05/TensorFlow-Audio-Classification/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://luuil.github.io/2018/09/05/Useful-Plugins-for-Hexo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leon Lau">
+      <meta itemprop="description" content="Plodding wins the race">
+      <meta itemprop="image" content="/chai.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Leon">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/05/Useful-Plugins-for-Hexo/" itemprop="url">
+                  Useful Plugins for Hexo
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-09-05 16:36:10" itemprop="dateCreated datePublished" datetime="2018-09-05T16:36:10+08:00">2018-09-05</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-09-08 10:07:40" itemprop="dateModified" datetime="2018-09-08T10:07:40+08:00">2018-09-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Tutorial/" itemprop="url" rel="index"><span itemprop="name">Tutorial</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Useful plugins for Hexo</p>
+<ul>
+<li>hexo-deployer-git</li>
+<li>hexo-generator-json-feed</li>
+<li>hexo-generator-seo-friendly-sitemap</li>
+<li>hexo-generator-searchdb</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/05/Useful-Plugins-for-Hexo/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://luuil.github.io/2018/09/04/Github-Pages-with-Hexo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -748,7 +1109,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -760,8 +1121,6 @@
                 <div class="site-state-item site-state-categories">
                   <a href="/categories/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -812,9 +1171,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

@@ -37,13 +37,6 @@
     </url>
 
     <url>
-        <loc>http://luuil.github.io/tags/Python/</loc>
-        <lastmod>2018-09-19T02:41:28.938Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://luuil.github.io/tags/LabelMe/</loc>
         <lastmod>2018-12-05T03:29:15.606Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -81,6 +74,41 @@
     <url>
         <loc>http://luuil.github.io/tags/%E5%A4%9A%E9%98%B6%E6%AE%B5%E6%9E%84%E5%BB%BA/</loc>
         <lastmod>2018-12-28T03:02:00.580Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://luuil.github.io/tags/vggish/</loc>
+        <lastmod>2019-11-05T04:05:15.979Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://luuil.github.io/tags/audioset/</loc>
+        <lastmod>2019-11-05T04:05:15.979Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://luuil.github.io/tags/audio-classification/</loc>
+        <lastmod>2019-11-05T04:05:15.979Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://luuil.github.io/tags/Python/</loc>
+        <lastmod>2019-11-05T04:07:40.447Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://luuil.github.io/tags/Decorator/</loc>
+        <lastmod>2019-11-05T04:07:40.447Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
